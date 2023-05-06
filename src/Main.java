@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -29,10 +31,10 @@ public class Main {
         printListEmployees(employeeBook);
         calculateSumAllSalary(employeeBook);
         calculateAverageSalary(employeeBook);
+        calculateMinSalary(employeeBook);
+        calculateMaxSalary(employeeBook);
 
     }
-
-
 
     private static void printListEmployees(Employee[] employeeBook) {
         System.out.println("Список всех сотрудников:");
@@ -58,6 +60,30 @@ public class Main {
             averageSum = sum / employeeBook.length;
         }
         System.out.println("Средняя зарплата: " + averageSum + " рублей.");
+    }
+
+    public static void calculateMinSalary(Employee[] employeeBook) {
+        int minSalary = 100_000;
+        String employeesNameMinSalary = "";
+        for (int i = 0; i < employeeBook.length; i++) {
+            if (minSalary > employeeBook[i].getSalary()) {
+                minSalary = employeeBook[i].getSalary();
+                employeesNameMinSalary = employeeBook[i].getFullName();
+            }
+        }
+        System.out.println("Минимальная зарплата " + minSalary + " рублей у сотрудника - " + employeesNameMinSalary + ".");
+    }
+
+    public static void calculateMaxSalary(Employee[] employeeBook) {
+        int maxSalary = 1;
+        String employeesNameMaxSalary = "";
+        for (int i = 0; i < employeeBook.length; i++) {
+            if (maxSalary < employeeBook[i].getSalary()) {
+                maxSalary = employeeBook[i].getSalary();
+                employeesNameMaxSalary = employeeBook[i].getFullName();
+            }
+        }
+        System.out.println("Максимальная зарплата " + maxSalary + " рублей у сотрудника - " + employeesNameMaxSalary + ".");
     }
 
     
