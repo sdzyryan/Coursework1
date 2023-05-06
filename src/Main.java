@@ -29,10 +29,16 @@ public class Main {
         employeeBook[9] = employee10;
 
         printListEmployees(employeeBook);
+        printSeparator();
         calculateSumAllSalary(employeeBook);
+        printSeparator();
         calculateAverageSalary(employeeBook);
+        printSeparator();
         calculateMinSalary(employeeBook);
+        printSeparator();
         calculateMaxSalary(employeeBook);
+        printSeparator();
+        printListOfAllEmployees(employeeBook);
 
     }
 
@@ -84,6 +90,19 @@ public class Main {
             }
         }
         System.out.println("Максимальная зарплата " + maxSalary + " рублей у сотрудника - " + employeesNameMaxSalary + ".");
+    }
+
+    public static void printListOfAllEmployees(Employee[] employeeBook) {
+        System.out.println("Список всех сотрудников:");
+        String listOfAllEmployees = "";
+        for (int i = 0; i < employeeBook.length; i++) {
+            listOfAllEmployees = employeeBook[i].getFullName();
+            System.out.println(listOfAllEmployees);
+        }
+    }
+
+    public static void printSeparator() {
+        System.out.println("==========================================================================================");
     }
 
     
