@@ -30,14 +30,22 @@ public class Main {
 
         printListEmployees(employeeBook);
         printSeparator();
-        calculateSumAllSalary(employeeBook);
+
+        System.out.println("Сумма затрат на зарплату всем сотрудникам в месяц: " + calculateSumAllSalary(employeeBook) +
+                " рублей.");
         printSeparator();
+
         calculateAverageSalary(employeeBook);
+        System.out.println("Средняя зарплата в месяц: " + calculateAverageSalary(employeeBook) +
+                " рублей.");
         printSeparator();
+
         calculateMinSalary(employeeBook);
         printSeparator();
+
         calculateMaxSalary(employeeBook);
         printSeparator();
+        
         printListOfAllEmployees(employeeBook);
 
     }
@@ -50,62 +58,55 @@ public class Main {
         }
     }
 
-    private static void calculateSumAllSalary(Employee[] employeeBook) {
+    private static int calculateSumAllSalary(Employee[] employeeBook) {
         int sum = 0;
         for (int i = 0; i < employeeBook.length; i++) {
             sum += employeeBook[i].getSalary();
         }
-        System.out.println("Сумма затрат на зарплаты в месяц: " + sum + " рублей.");
+        return sum;
     }
 
-    private static void calculateAverageSalary(Employee[] employeeBook) {
+    private static float calculateAverageSalary(Employee[] employeeBook) {
         int sum = 0;
         int averageSum = 0;
         for (int i = 0; i < employeeBook.length; i++) {
             sum += employeeBook[i].getSalary();
-            averageSum = sum / employeeBook.length;
         }
-        System.out.println("Средняя зарплата: " + averageSum + " рублей.");
+        averageSum = sum / employeeBook.length;
+        return averageSum;
     }
 
     public static void calculateMinSalary(Employee[] employeeBook) {
-        int minSalary = 100_000;
-        String employeesNameMinSalary = "";
-        for (int i = 0; i < employeeBook.length; i++) {
-            if (minSalary > employeeBook[i].getSalary()) {
-                minSalary = employeeBook[i].getSalary();
-                employeesNameMinSalary = employeeBook[i].getFullName();
+        Employee minSalary = employeeBook[0];
+        for (Employee employee : employeeBook) {
+            if (minSalary.getSalary() > employee.getSalary()) {
+                minSalary = employee;
             }
         }
-        System.out.println("Минимальная зарплата " + minSalary + " рублей у сотрудника - " + employeesNameMinSalary + ".");
+        System.out.println("Минимальная зарплата "+ minSalary.getSalary() +" рублей.");
     }
 
     public static void calculateMaxSalary(Employee[] employeeBook) {
-        int maxSalary = 1;
-        String employeesNameMaxSalary = "";
-        for (int i = 0; i < employeeBook.length; i++) {
-            if (maxSalary < employeeBook[i].getSalary()) {
-                maxSalary = employeeBook[i].getSalary();
-                employeesNameMaxSalary = employeeBook[i].getFullName();
+        Employee maxSalary = employeeBook[0];
+        for (Employee employee : employeeBook) {
+            if (maxSalary.getSalary() < employee.getSalary()) {
+                maxSalary = employee;
             }
         }
-        System.out.println("Максимальная зарплата " + maxSalary + " рублей у сотрудника - " + employeesNameMaxSalary + ".");
+        System.out.println("Максимальная зарплата "+ maxSalary.getSalary() +" рублей.");
     }
 
     public static void printListOfAllEmployees(Employee[] employeeBook) {
         System.out.println("Список всех сотрудников:");
-        String listOfAllEmployees = "";
-        for (int i = 0; i < employeeBook.length; i++) {
-            listOfAllEmployees = employeeBook[i].getFullName();
-            System.out.println(listOfAllEmployees);
+        for (Employee employee : employeeBook) {
+            System.out.println(employee.getFullName());
         }
     }
 
     public static void printSeparator() {
-        System.out.println("==========================================================================================");
+        System.out.println("--------------");
     }
 
-    
 
 }
 

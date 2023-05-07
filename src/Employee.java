@@ -3,13 +3,13 @@ public class Employee {
     private int department;
     private int salary;
     private static int counter = 1;
-    private int id;
+    private final int ID;
 
     public Employee(String fullName, int salary, int department) {
         this.fullName = fullName;
         this.salary = salary;
         this.department = department;
-        this.id = counter++;
+        this.ID = counter++;
     }
 
 
@@ -35,8 +35,8 @@ public class Employee {
 
     @Override
     public String toString() {
-        return id + ". " + "ФИО сотрудника: " + fullName + ". " +
-                "Зарплата: " + salary + " рублей. " +
+        return  "ФИО сотрудника: " + fullName + ". " + "ID: "+ ID +
+                ". Зарплата: " + salary + " рублей. " +
                 "Департамент: " + department + ". ";
     }
 }
